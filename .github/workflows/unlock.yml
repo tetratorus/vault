@@ -60,6 +60,7 @@ jobs:
           raw = hmac.new(sys.argv[1].encode("utf-8"), sys.argv[2].encode("utf-8"), hashlib.sha256).digest()
           print(bech32_encode("age-secret-key-", convertbits(raw, 8, 5)).upper())
           PY
+          echo "::notice title=scope-key::$(base64 -w0 scope.key.age)"
 
       - name: Upload wrapped scope key
         uses: actions/upload-artifact@v4
